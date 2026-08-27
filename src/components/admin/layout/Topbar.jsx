@@ -150,8 +150,8 @@ const Topbar = () => {
               className="user-avatar"
             />
             <div className="user-details-desktop">
-              <span className="user-name">Sarah Jenkins</span>
-              <span className="user-role">Super Admin</span>
+              <span className="user-name">Smart_booking_system</span>
+              <span className="user-role">Admin</span>
             </div>
             <ChevronDown size={14} className="user-chevron" />
           </div>
@@ -159,8 +159,9 @@ const Topbar = () => {
           {isProfileMenuOpen && (
             <div className="dropdown-menu profile-dropdown">
               <div className="profile-info-header">
-                <p className="p-name">Sarah Jenkins</p>
-                <p className="p-email">sarah.admin@smartbooking.io</p>
+                <p className="p-name">Smart_booking_system</p>
+                <p className="p-email">smartbooking@gmail.com
+                </p>
               </div>
               <div className="dropdown-divider" />
               <button
