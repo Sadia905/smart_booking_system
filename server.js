@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection string
-const uri = process.env.MONGODB_URI || "mongodb://smart_booking_system:booking123@ac-iabhugj-shard-00-00.ipxndyf.mongodb.net:27017,ac-iabhugj-shard-00-01.ipxndyf.mongodb.net:27017,ac-iabhugj-shard-00-02.ipxndyf.mongodb.net:27017/?ssl=true&replicaSet=atlas-ba1i2o-shard-0&authSource=admin&appName=Cluster0";
+const uri = process.env.MONGODB_URI;
 
 // Establish database connection
 mongoose.connect(uri, { dbName: 'smart_booking' })
@@ -25,6 +25,11 @@ mongoose.connect(uri, { dbName: 'smart_booking' })
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error.message);
   });
+
+// Root route for server health check
+app.get('/', (req, res) => {
+  res.send('Smart Booking API is running!');
+});
 
 // API Routes
 app.post('/api/services', async (req, res) => {

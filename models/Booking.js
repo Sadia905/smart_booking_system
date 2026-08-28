@@ -16,3 +16,4 @@ const bookingSchema = new mongoose.Schema({
 }, { collection: 'smart_booking' });
 
 export default mongoose.model('Booking', bookingSchema);
+
