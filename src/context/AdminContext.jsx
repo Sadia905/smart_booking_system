@@ -17,6 +17,8 @@ const STORAGE_KEYS = {
   AUTH: 'sb_admin_auth_v1'
 };
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export const AdminProvider = ({ children }) => {
   // Services State
   const [services, setServices] = useState([]);
@@ -105,8 +107,8 @@ export const AdminProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const [servicesRes, bookingsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/services'),
-          fetch('http://localhost:5000/api/bookings')
+          fetch(`${API_URL}/api/services`),
+          fetch(`${API_URL}/api/bookings`)
         ]);
         
         if (servicesRes.ok) {
@@ -181,7 +183,7 @@ export const AdminProvider = ({ children }) => {
   // --- CRUD ACTIONS FOR SERVICES ---
   const addService = async (newServiceData) => {
     try {
-      const response = await fetch('http://localhost:5000/api/services', {
+      const response = await fetch(`${API_URL}/api/services`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -226,7 +228,7 @@ export const AdminProvider = ({ children }) => {
   // --- CRUD ACTIONS FOR BOOKINGS ---
   const addBooking = async (bookingData) => {
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch(`${API_URL}/api/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -252,7 +254,7 @@ export const AdminProvider = ({ children }) => {
 
   const updateBookingStatus = async (id, newBookingStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/bookings/${id}/status`, {
+      const response = await fetch(`${API_URL}/api/bookings/${id}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newBookingStatus })
@@ -274,7 +276,7 @@ export const AdminProvider = ({ children }) => {
 
   const deleteBooking = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/bookings/${id}`, {
+      const response = await fetch(`${API_URL}/api/bookings/${id}`, {
         method: 'DELETE'
       });
 
